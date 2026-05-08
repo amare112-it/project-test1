@@ -1,23 +1,54 @@
+:root {
+    --bg-color: #f0f2f5;
+    --container-bg: white;
+    --text-color: #333;
+    --ball-bg: #e0e0e0;
+    --shadow: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #18191a;
+    --container-bg: #242526;
+    --text-color: #e4e6eb;
+    --ball-bg: #3a3b3c;
+    --shadow: rgba(0,0,0,0.3);
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
 }
 
 .container {
     text-align: center;
-    background: white;
+    background: var(--container-bg);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px var(--shadow);
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 h1 {
-    color: #333;
     margin-bottom: 2rem;
 }
 
@@ -33,15 +64,15 @@ h1 {
     height: 50px;
     line-height: 50px;
     border-radius: 50%;
-    background: #e0e0e0;
-    color: #333;
+    background: var(--ball-bg);
+    color: var(--text-color);
     font-weight: bold;
     font-size: 1.2rem;
     display: inline-block;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s;
 }
 
-button {
+button#generate-btn {
     padding: 10px 25px;
     font-size: 1.1rem;
     background-color: #007bff;
@@ -52,12 +83,11 @@ button {
     transition: background 0.3s;
 }
 
-button:hover {
+button#generate-btn:hover {
     background-color: #0056b3;
 }
 
 .ball.active {
-    background: #ffc107;
     color: #000;
     transform: scale(1.1);
 }

@@ -1,3 +1,11 @@
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    themeToggle.textContent = newTheme === 'dark' ? '라이트 모드' : '다크 모드';
+});
+
 document.getElementById('generate-btn').addEventListener('click', function() {
     const numbersContainer = document.getElementById('lotto-numbers');
     const balls = numbersContainer.getElementsByClassName('ball');
